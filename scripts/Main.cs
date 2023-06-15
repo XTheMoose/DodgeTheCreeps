@@ -83,6 +83,7 @@ public partial class Main : Node
 		mob.Position = mobSpawnLocation.Position;
 
 		// Randomize direction
+		
 		direction += (float)GD.RandRange(-Mathf.Pi / 4, Mathf.Pi / 4);
 		mob.Rotation = direction;
 

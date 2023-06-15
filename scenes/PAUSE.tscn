@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bmkxdwb7gta1m"]
 
-[ext_resource type="Script" path="res://PAUSE.cs" id="1_gusks"]
+[ext_resource type="Script" path="res://scripts/PAUSE.cs" id="1_gusks"]
 [ext_resource type="FontFile" uid="uid://cut5in22dxubl" path="res://fonts/Xolonium-Regular.ttf" id="2_y651b"]
 
 [node name="PAUSE" type="CanvasLayer"]
