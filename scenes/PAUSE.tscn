@@ -1,10 +1,15 @@
-[gd_scene load_steps=3 format=3 uid="uid://bmkxdwb7gta1m"]
+[gd_scene load_steps=5 format=3 uid="uid://dah1p5wqa4xqn"]
 
 [ext_resource type="Script" path="res://scripts/Pause.cs" id="1_t45lf"]
 [ext_resource type="FontFile" uid="uid://cut5in22dxubl" path="res://fonts/Xolonium-Regular.ttf" id="2_xiemk"]
 
+[sub_resource type="InputEventAction" id="InputEventAction_qmp3j"]
+action = &"pause_game"
+
+[sub_resource type="Shortcut" id="Shortcut_mgiug"]
+events = [SubResource("InputEventAction_qmp3j")]
+
 [node name="Pause" type="CanvasLayer"]
-process_mode = 3
 script = ExtResource("1_t45lf")
 
 [node name="Message" type="Label" parent="."]
@@ -27,16 +32,19 @@ vertical_alignment = 1
 autowrap_mode = 2
 
 [node name="ContinueButton" type="Button" parent="."]
+process_mode = 2
 offset_left = 488.0
 offset_top = 192.0
 offset_right = 796.0
 offset_bottom = 278.0
 theme_override_fonts/font = ExtResource("2_xiemk")
 theme_override_font_sizes/font_size = 64
+shortcut = SubResource("Shortcut_mgiug")
 text = "Continue
 "
 
 [node name="RestartButton" type="Button" parent="."]
+process_mode = 2
 offset_left = 488.0
 offset_top = 296.0
 offset_right = 796.0
@@ -46,6 +54,7 @@ theme_override_font_sizes/font_size = 64
 text = "Restart"
 
 [node name="QuitButton" type="Button" parent="."]
+process_mode = 2
 offset_left = 488.0
 offset_top = 400.0
 offset_right = 796.0

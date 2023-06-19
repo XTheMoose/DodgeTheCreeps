@@ -1,10 +1,8 @@
 using Godot;
 using System;
 
-public partial class PAUSE : CanvasLayer
+public partial class Pause : CanvasLayer
 {
-    [Signal]
-    public delegate void PauseGameEventHandler();
     [Signal]
     public delegate void StartGameEventHandler();   
     public override void _Ready()
@@ -16,7 +14,8 @@ public partial class PAUSE : CanvasLayer
     {
         if (Input.IsActionJustReleased("pause_game"))
 		{
-            EmitSignal(SignalName.PauseGame);
+            Show();
+		    GetTree().Paused = true;
 		}
     }
     private void OnContinue()
@@ -33,6 +32,9 @@ public partial class PAUSE : CanvasLayer
     }
     private void OnQuit()
     {
+        GD.Print("Now Quiting");
+        GetTree().Root.PropagateNotification((int)NotificationWMCloseRequest);
         
     }
 }
+

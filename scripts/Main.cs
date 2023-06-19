@@ -46,11 +46,6 @@ public partial class Main : Node
 		GetNode<AudioStreamPlayer>("Music").Play();
 
 	}
-	public void PauseGame()
-	{
-		GetNode<StartMenu>("Pause").Show();
-		GetTree().Paused = true;
-	}
 
 	private void OnScoreTimerTimeout()
 	{
@@ -114,4 +109,9 @@ public partial class Main : Node
 	{
 		GD.Print("POWER ACTIVATED");
 	}
+	public override void _Notification(int what)
+{
+    if (what == NotificationWMCloseRequest)
+        GetTree().Quit(); // default behavior
+}
 }
