@@ -5,6 +5,8 @@ public partial class Player : Area2D
 {
 	[Signal]
 	public delegate void HitEventHandler();
+	[Signal]
+	public delegate void PowerEventHandler();
 	
 	[Export]
 	public int Speed { get; set; } = 400;
@@ -79,6 +81,11 @@ public partial class Player : Area2D
 		Hide();
 		EmitSignal(SignalName.Hit);
 		GetNode<CollisionShape2D>("CollisionShape2D").SetDeferred(CollisionShape2D.PropertyName.Disabled, true);
+	}
+
+	private void OnAreaEntered(Area2D area)
+	{
+		EmitSignal(SignalName.Power);
 	}
 
 	public void Start(Vector2 position)

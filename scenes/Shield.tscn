@@ -1,0 +1,41 @@
+[gd_scene load_steps=8 format=3 uid="uid://dlhc55w2cy21d"]
+
+[ext_resource type="Texture2D" uid="uid://jmkdebq60g3g" path="res://art/bubblePower1.png" id="1_8ntnp"]
+[ext_resource type="Script" path="res://scripts/Shield.cs" id="1_x3xbk"]
+[ext_resource type="Texture2D" uid="uid://vad1bnx5im5i" path="res://art/bubblePower2.png" id="2_ldaji"]
+[ext_resource type="Texture2D" uid="uid://bv3nadj3x7fne" path="res://art/bubblePower3.png" id="3_8ighv"]
+[ext_resource type="Texture2D" uid="uid://bdme5fisurnhy" path="res://art/bubblePower4.png" id="4_mcw5g"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_wj6wl"]
+animations = [{
+"frames": [{
+"duration": 2.5,
+"texture": ExtResource("1_8ntnp")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_ldaji")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_8ighv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_mcw5g")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_cco17"]
+radius = 16.0312
+
+[node name="Area2D" type="Area2D"]
+collision_layer = 4
+script = ExtResource("1_x3xbk")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+texture_filter = 1
+sprite_frames = SubResource("SpriteFrames_wj6wl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("CircleShape2D_cco17")

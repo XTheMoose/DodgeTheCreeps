@@ -1,11 +1,11 @@
 [gd_scene load_steps=3 format=3 uid="uid://bmkxdwb7gta1m"]
 
-[ext_resource type="Script" path="res://scripts/PAUSE.cs" id="1_gusks"]
-[ext_resource type="FontFile" uid="uid://cut5in22dxubl" path="res://fonts/Xolonium-Regular.ttf" id="2_y651b"]
+[ext_resource type="Script" path="res://scripts/Pause.cs" id="1_t45lf"]
+[ext_resource type="FontFile" uid="uid://cut5in22dxubl" path="res://fonts/Xolonium-Regular.ttf" id="2_xiemk"]
 
-[node name="PAUSE" type="CanvasLayer"]
+[node name="Pause" type="CanvasLayer"]
 process_mode = 3
-script = ExtResource("1_gusks")
+script = ExtResource("1_t45lf")
 
 [node name="Message" type="Label" parent="."]
 anchors_preset = 8
@@ -19,7 +19,7 @@ offset_right = 274.0
 offset_bottom = -158.0
 grow_horizontal = 2
 grow_vertical = 2
-theme_override_fonts/font = ExtResource("2_y651b")
+theme_override_fonts/font = ExtResource("2_xiemk")
 theme_override_font_sizes/font_size = 64
 text = "Game Paused"
 horizontal_alignment = 1
@@ -31,7 +31,7 @@ offset_left = 488.0
 offset_top = 192.0
 offset_right = 796.0
 offset_bottom = 278.0
-theme_override_fonts/font = ExtResource("2_y651b")
+theme_override_fonts/font = ExtResource("2_xiemk")
 theme_override_font_sizes/font_size = 64
 text = "Continue
 "
@@ -41,7 +41,7 @@ offset_left = 488.0
 offset_top = 296.0
 offset_right = 796.0
 offset_bottom = 382.0
-theme_override_fonts/font = ExtResource("2_y651b")
+theme_override_fonts/font = ExtResource("2_xiemk")
 theme_override_font_sizes/font_size = 64
 text = "Restart"
 
@@ -50,7 +50,7 @@ offset_left = 488.0
 offset_top = 400.0
 offset_right = 796.0
 offset_bottom = 486.0
-theme_override_fonts/font = ExtResource("2_y651b")
+theme_override_fonts/font = ExtResource("2_xiemk")
 theme_override_font_sizes/font_size = 64
 text = "Quit
 "

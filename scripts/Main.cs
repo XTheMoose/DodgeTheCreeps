@@ -6,6 +6,9 @@ public partial class Main : Node
 	[Export]
 	public PackedScene MobScene { get; set;}
 
+	[Export]
+	public PackedScene PowerUps {get; set;}
+
 	private int _score;
 	private float _mobTimer;
 	private int _speed;
@@ -14,7 +17,8 @@ public partial class Main : Node
 	{
 		GetNode<Timer>("MobTimer").Stop();
 		GetNode<Timer>("ScoreTimer").Stop();
-		GetNode<HUD>("HUD").ShowGameOver();
+		GetNode<Timer>("PowerUpTimer").Stop();
+		GetNode<StartMenu>("StartMenu").ShowGameOver();
 		GetNode<AudioStreamPlayer>("Music").Stop();
 		GetNode<AudioStreamPlayer>("DeathSound").Play();
 	}
@@ -26,6 +30,7 @@ public partial class Main : Node
 		_speed = 0;
 
 		GetTree().CallGroup("mobs", Node.MethodName.QueueFree);
+		GetTree().CallGroup("powers", Node.MethodName.QueueFree);
 
 		var player = GetNode<Player>("Player");
 		var startPosition = GetNode<Marker2D>("StartPosition");
@@ -34,7 +39,7 @@ public partial class Main : Node
 		GetNode<Timer>("StartTimer").Start();
 		GetNode<Timer>("MobTimer").WaitTime = _mobTimer;
 
-		var hud = GetNode<HUD>("HUD");
+		var hud = GetNode<StartMenu>("StartMenu");
 		hud.UpdateScore(_score);
 		hud.ShowMessage("Get Ready!");
 
@@ -43,14 +48,14 @@ public partial class Main : Node
 	}
 	public void PauseGame()
 	{
-		GetNode<PAUSE>("PAUSE").Show();
+		GetNode<StartMenu>("Pause").Show();
 		GetTree().Paused = true;
 	}
 
 	private void OnScoreTimerTimeout()
 	{
 		_score++;
-		GetNode<HUD>("HUD").UpdateScore(_score);
+		GetNode<StartMenu>("StartMenu").UpdateScore(_score);
 
 		if (_mobTimer > 0.05 && _score % 5 == 0)
 		{
@@ -65,6 +70,7 @@ public partial class Main : Node
 	{
 		GetNode<Timer>("MobTimer").Start();
 		GetNode<Timer>("ScoreTimer").Start();
+		GetNode<Timer>("PowerUpTimer").Start();
 	}
 
 	private void OnMobTimerTimeout()
@@ -93,5 +99,19 @@ public partial class Main : Node
 
 		// Spawn the mob in main scene
 		AddChild(mob);
+
+	}
+	private void OnPowerUpTimerTimeout()
+	{
+		Shield shield = PowerUps.Instantiate<Shield>();
+		shield.Position = new Vector2(
+			(float)GD.RandRange(0, GetViewport().GetVisibleRect().Size.X),
+			(float)GD.RandRange(0, GetViewport().GetVisibleRect().Size.Y));
+		AddChild(shield);
+		
+	}
+	private void PowerUp()
+	{
+		GD.Print("POWER ACTIVATED");
 	}
 }

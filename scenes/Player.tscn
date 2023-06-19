@@ -38,6 +38,7 @@ height = 122.667
 [node name="Player" type="Area2D"]
 position = Vector2(1, 0)
 scale = Vector2(0.75, 0.75)
+collision_mask = 6
 script = ExtResource("1_gdg2g")
 Speed = 500
 
@@ -52,4 +53,5 @@ metadata/_edit_group_ = true
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CapsuleShape2D_4282f")
 
+[connection signal="area_entered" from="." to="." method="OnAreaEntered"]
 [connection signal="body_entered" from="." to="." method="OnBodyEntered"]
